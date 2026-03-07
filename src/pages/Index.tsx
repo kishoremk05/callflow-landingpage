@@ -495,6 +495,29 @@ const Index = () => {
 
       {/* ===== PREMIUM FEATURES — HORIZONTAL SCROLL ===== */}
       <section ref={featuresScrollRef} className="relative h-screen overflow-hidden">
+        {/* Grid pattern background */}
+        <div className="absolute inset-0 z-0">
+          <div
+            className="absolute inset-0 opacity-[0.25]"
+            style={{
+              backgroundImage:
+                "linear-gradient(hsl(80 70% 45%) 2px, transparent 2px), linear-gradient(90deg, hsl(80 70% 45%) 2px, transparent 2px)",
+              backgroundSize: "120px 120px",
+            }}
+          />
+          {/* Radial glow behind the grid */}
+          <div
+            className="absolute inset-0"
+            style={{
+              background:
+                "radial-gradient(ellipse at 50% 50%, hsl(80 100% 50% / 0.04) 0%, transparent 60%)",
+            }}
+          />
+          {/* Edge fade so grid blends into dark */}
+          <div className="absolute inset-0 bg-gradient-to-r from-dark via-transparent to-dark" />
+          <div className="absolute inset-0 bg-gradient-to-b from-dark via-transparent to-dark opacity-60" />
+        </div>
+
         {/* Single horizontal track — header + zig-zag cards all scroll together */}
         <div
           ref={featuresTrackRef}
