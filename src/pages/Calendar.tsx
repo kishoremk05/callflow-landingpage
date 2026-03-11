@@ -3,11 +3,7 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import SplitText from "@/components/SplitText";
 import ScrollReveal from "@/components/ScrollReveal";
-import {
-  pricingTiers,
-  featureComparison,
-  faqItems,
-} from "@/lib/data";
+import { pricingTiers, featureComparison, faqItems } from "@/lib/data";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -38,13 +34,17 @@ const Pricing = () => {
         </SplitText>
         <ScrollReveal delay={0.6} y={20}>
           <p className="text-muted-dark font-body text-sm mt-4 max-w-md">
-            Transparent pricing for teams of every size. Start free, scale as you grow.
+            Transparent pricing for teams of every size. Start free, scale as
+            you grow.
           </p>
         </ScrollReveal>
       </section>
 
       {/* Pricing Cards */}
-      <section className="px-6 md:px-16 pb-16">
+      <section
+        id="pricing-details"
+        className="px-6 md:px-16 pb-16 scroll-mt-28"
+      >
         <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-4">
           {pricingTiers.map((tier, i) => (
             <ScrollReveal key={tier.id} delay={i * 0.1}>
@@ -186,7 +186,9 @@ const Pricing = () => {
                   </button>
                   <div
                     className={`overflow-hidden transition-all duration-500 ease-out ${
-                      openFaq === i ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
+                      openFaq === i
+                        ? "max-h-96 opacity-100"
+                        : "max-h-0 opacity-0"
                     }`}
                   >
                     <p className="px-6 pb-6 font-body text-sm text-muted-dark leading-relaxed">

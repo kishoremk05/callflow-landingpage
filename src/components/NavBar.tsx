@@ -88,11 +88,15 @@ const NavBar = () => {
               duration: animConfig.duration.slow,
               ease: animConfig.ease.smooth,
             }}
-            className="fixed inset-0 z-40 bg-lime flex flex-col items-center justify-center gap-8"
+            className="fixed inset-0 z-40 bg-dark flex flex-col items-center justify-center gap-8 overflow-hidden"
           >
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,hsl(var(--lime)_/_0.18),transparent_35%)]" />
+            <div className="absolute inset-0 bg-[linear-gradient(180deg,hsl(var(--dark-card))_0%,hsl(var(--dark))_100%)] opacity-95" />
+            <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-lime/40 to-transparent" />
             {navLinks.map((link, i) => (
               <motion.div
                 key={link.path}
+                className="relative z-10"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.1 + i * 0.05, duration: 0.3 }}
@@ -102,8 +106,8 @@ const NavBar = () => {
                   onClick={close}
                   className={`font-display text-4xl md:text-5xl tracking-widest uppercase transition-colors ${
                     location.pathname === link.path
-                      ? "text-on-lime opacity-50"
-                      : "text-on-lime hover:opacity-60"
+                      ? "text-lime opacity-50"
+                      : "text-on-dark hover:text-lime"
                   }`}
                 >
                   {link.label}
@@ -115,7 +119,7 @@ const NavBar = () => {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.4 }}
-              className="absolute bottom-8 text-on-lime/50 text-xs font-body tracking-widest uppercase"
+              className="absolute bottom-8 text-lime/50 text-xs font-body tracking-widest uppercase"
             >
               {companyInfo.tagline}
             </motion.p>

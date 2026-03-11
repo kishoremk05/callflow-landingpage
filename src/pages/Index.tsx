@@ -8,6 +8,7 @@ import {
   companyInfo,
   features,
   integrations,
+  pricingTiers,
   stats,
   testimonials,
 } from "@/lib/data";
@@ -445,12 +446,12 @@ const Index = () => {
       </div>
 
       {/* ===== MARQUEE BANNER ===== */}
-      <div className="bg-lime py-3 overflow-hidden">
+      <div className="bg-dark-lighter border-y border-lime/10 py-3 overflow-hidden">
         <div className="flex animate-marquee whitespace-nowrap">
           {Array.from({ length: 8 }).map((_, i) => (
             <span
               key={i}
-              className="mx-8 font-display text-sm text-on-lime tracking-[0.3em] uppercase"
+              className="mx-8 font-display text-sm text-lime tracking-[0.3em] uppercase"
             >
               {companyInfo.tagline}
             </span>
@@ -828,21 +829,25 @@ const Index = () => {
       {/* ===== STATS BANNER ===== */}
       <section
         ref={statsRef}
-        className="bg-lime py-16 md:py-24 sticky top-0 z-10"
+        className="py-16 md:py-24 sticky top-0 z-10 border-y border-lime/10"
+        style={{
+          background:
+            "linear-gradient(180deg, hsl(var(--dark-card)) 0%, hsl(var(--dark-lighter)) 100%)",
+        }}
       >
         <div className="max-w-7xl mx-auto px-6">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
             {stats.map((stat) => (
               <ScrollReveal key={stat.label}>
                 <p
-                  className="font-display text-6xl md:text-8xl text-on-lime"
+                  className="font-display text-6xl md:text-8xl text-lime"
                   data-counter={stat.numericValue}
                   data-suffix={stat.value.replace(/[\d.]/g, "")}
                   data-decimals={stat.value.includes(".") ? "1" : undefined}
                 >
                   0
                 </p>
-                <p className="font-body text-sm text-on-lime/60 tracking-widest uppercase mt-2">
+                <p className="font-body text-sm text-lime/60 tracking-widest uppercase mt-2">
                   {stat.label}
                 </p>
               </ScrollReveal>
@@ -1040,186 +1045,94 @@ const Index = () => {
             </div>
           </ScrollReveal>
 
-          {/* Pricing cards */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 items-start">
-            {/* Starter */}
-            <ScrollReveal delay={0}>
-              <div
-                className="relative p-8 h-full transition-all duration-500 hover:-translate-y-1"
-                style={{
-                  background:
-                    "linear-gradient(180deg, hsl(220 8% 13%) 0%, hsl(220 8% 10%) 100%)",
-                  border: "1px solid hsl(var(--lime-dark) / 0.08)",
-                  borderRadius: "8px",
-                }}
-              >
-                <p className="font-display text-sm text-muted-dark tracking-widest uppercase mb-4">
-                  Starter
-                </p>
-                <div className="flex items-baseline gap-1 mb-2">
-                  <span className="font-display text-5xl text-on-dark">$5</span>
-                  <span className="font-body text-sm text-muted-dark">
-                    /month
-                  </span>
-                </div>
-                <p className="font-body text-xs text-muted-dark mb-8">
-                  For solo use with light needs.
-                </p>
-                <div className="space-y-3 mb-10">
-                  {[
-                    "Call 50+ countries",
-                    "HD browser calling",
-                    "Basic support",
-                    "Call history",
-                    "Wallet system",
-                  ].map((f) => (
-                    <div key={f} className="flex items-center gap-2">
-                      <span className="text-lime text-xs">✓</span>
-                      <span className="font-body text-sm text-on-dark">
-                        {f}
-                      </span>
-                    </div>
-                  ))}
-                </div>
-                <a
-                  href="#"
-                  className="block w-full text-center py-3.5 font-display text-sm uppercase tracking-widest transition-all duration-300 hover:opacity-90"
-                  style={{
-                    background: "hsl(220 8% 20%)",
-                    color: "hsl(0 0% 100%)",
-                    borderRadius: "4px",
-                  }}
-                >
-                  Get Started
-                </a>
-              </div>
-            </ScrollReveal>
+          <ScrollReveal delay={0.05}>
+            <div className="max-w-2xl mx-auto text-center mb-12">
+              <p className="font-body text-sm text-muted-dark leading-relaxed">
+                The homepage now gives a quick pricing snapshot only. Click any
+                plan to jump into the full pricing breakdown, feature
+                comparison, and FAQ.
+              </p>
+            </div>
+          </ScrollReveal>
 
-            {/* Business - Most Popular */}
-            <ScrollReveal delay={0.1}>
-              <div
-                className="relative p-8 h-full transition-all duration-500 hover:-translate-y-1 md:scale-105"
-                style={{
-                  background:
-                    "linear-gradient(180deg, hsl(220 8% 14%) 0%, hsl(220 8% 10%) 100%)",
-                  border: "1px solid hsl(var(--lime-dark) / 0.25)",
-                  borderRadius: "8px",
-                  boxShadow: "0 0 40px hsl(var(--lime-dark) / 0.06)",
-                }}
-              >
-                {/* Badge */}
-                <div className="flex items-center justify-between mb-4">
-                  <p className="font-display text-sm text-muted-dark tracking-widest uppercase">
-                    Business
-                  </p>
-                  <span
-                    className="font-display text-[10px] uppercase tracking-wider px-3 py-1"
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 items-stretch">
+            {pricingTiers.map((tier, index) => {
+              const isHighlighted = tier.highlighted;
+
+              return (
+                <ScrollReveal key={tier.id} delay={index * 0.08}>
+                  <Link
+                    to="/pricing#pricing-details"
+                    className={`relative block p-8 h-full transition-all duration-500 hover:-translate-y-1 ${
+                      isHighlighted ? "md:scale-[1.02]" : ""
+                    }`}
                     style={{
-                      background: "hsl(var(--lime-dark))",
-                      color: "hsl(220 8% 10%)",
-                      borderRadius: "3px",
+                      background: isHighlighted
+                        ? "linear-gradient(180deg, hsl(220 8% 14%) 0%, hsl(220 8% 10%) 100%)"
+                        : "linear-gradient(180deg, hsl(220 8% 13%) 0%, hsl(220 8% 10%) 100%)",
+                      border: isHighlighted
+                        ? "1px solid hsl(var(--lime-dark) / 0.25)"
+                        : "1px solid hsl(var(--lime-dark) / 0.08)",
+                      borderRadius: "8px",
+                      boxShadow: isHighlighted
+                        ? "0 0 40px hsl(var(--lime-dark) / 0.06)"
+                        : "none",
                     }}
                   >
-                    Most Popular
-                  </span>
-                </div>
-                <div className="flex items-baseline gap-1 mb-2">
-                  <span className="font-display text-5xl text-on-dark">
-                    $50
-                  </span>
-                  <span className="font-body text-sm text-muted-dark">
-                    /month
-                  </span>
-                </div>
-                <p className="font-body text-xs text-muted-dark mb-8">
-                  Best value for teams
-                </p>
-                <div className="space-y-3 mb-10">
-                  {[
-                    "All Starter features",
-                    "190+ countries",
-                    "Call recording",
-                    "Priority support",
-                    "Team features",
-                    "Organization management",
-                  ].map((f) => (
-                    <div key={f} className="flex items-center gap-2">
-                      <span className="text-lime text-xs">✓</span>
-                      <span className="font-body text-sm text-on-dark">
-                        {f}
-                      </span>
-                    </div>
-                  ))}
-                </div>
-                <a
-                  href="#"
-                  className="block w-full text-center py-3.5 font-display text-sm uppercase tracking-widest transition-all duration-300 hover:scale-[1.02]"
-                  style={{
-                    background: "hsl(var(--lime-dark))",
-                    color: "hsl(220 8% 10%)",
-                    borderRadius: "4px",
-                  }}
-                >
-                  Get Started
-                </a>
-              </div>
-            </ScrollReveal>
+                    <div className="flex items-start justify-between gap-4 mb-5">
+                      <div>
+                        <p className="font-display text-sm text-muted-dark tracking-widest uppercase mb-2">
+                          {tier.name}
+                        </p>
+                        <div className="flex items-baseline gap-1">
+                          <span className="font-display text-5xl text-on-dark">
+                            {tier.price}
+                          </span>
+                          <span className="font-body text-sm text-muted-dark">
+                            {tier.period}
+                          </span>
+                        </div>
+                      </div>
 
-            {/* Enterprise */}
-            <ScrollReveal delay={0.2}>
-              <div
-                className="relative p-8 h-full transition-all duration-500 hover:-translate-y-1"
-                style={{
-                  background:
-                    "linear-gradient(180deg, hsl(220 8% 13%) 0%, hsl(220 8% 10%) 100%)",
-                  border: "1px solid hsl(var(--lime-dark) / 0.08)",
-                  borderRadius: "8px",
-                }}
-              >
-                <p className="font-display text-sm text-muted-dark tracking-widest uppercase mb-4">
-                  Enterprise
-                </p>
-                <div className="flex items-baseline gap-1 mb-2">
-                  <span className="font-display text-5xl text-on-dark">
-                    $200
-                  </span>
-                  <span className="font-body text-sm text-muted-dark">
-                    /month
-                  </span>
-                </div>
-                <p className="font-body text-xs text-muted-dark mb-8">
-                  For team use with custom needs.
-                </p>
-                <div className="space-y-3 mb-10">
-                  {[
-                    "All Business features",
-                    "Dedicated manager",
-                    "Custom numbers",
-                    "API access",
-                    "SLA guarantee",
-                    "Custom integrations",
-                  ].map((f) => (
-                    <div key={f} className="flex items-center gap-2">
-                      <span className="text-lime text-xs">✓</span>
-                      <span className="font-body text-sm text-on-dark">
-                        {f}
-                      </span>
+                      {isHighlighted ? (
+                        <span
+                          className="font-display text-[10px] uppercase tracking-wider px-3 py-1"
+                          style={{
+                            background: "hsl(var(--lime-dark))",
+                            color: "hsl(220 8% 10%)",
+                            borderRadius: "3px",
+                          }}
+                        >
+                          Popular
+                        </span>
+                      ) : null}
                     </div>
-                  ))}
-                </div>
-                <a
-                  href="#"
-                  className="block w-full text-center py-3.5 font-display text-sm uppercase tracking-widest transition-all duration-300 hover:opacity-90"
-                  style={{
-                    background: "hsl(220 8% 20%)",
-                    color: "hsl(0 0% 100%)",
-                    borderRadius: "4px",
-                  }}
-                >
-                  Contact Sales
-                </a>
-              </div>
-            </ScrollReveal>
+
+                    <p className="font-body text-sm text-muted-dark mb-6">
+                      {tier.description}
+                    </p>
+
+                    <div className="space-y-3 mb-8">
+                      {tier.features.slice(0, 2).map((feature) => (
+                        <div key={feature} className="flex items-center gap-2">
+                          <span className="text-lime text-xs">✓</span>
+                          <span className="font-body text-sm text-on-dark">
+                            {feature}
+                          </span>
+                        </div>
+                      ))}
+                    </div>
+
+                    <div className="flex items-center justify-between border-t border-lime/10 pt-5">
+                      <span className="font-display text-xs tracking-[0.25em] uppercase text-lime">
+                        View Full Plan
+                      </span>
+                      <span className="font-display text-lg text-lime">→</span>
+                    </div>
+                  </Link>
+                </ScrollReveal>
+              );
+            })}
           </div>
         </div>
       </section>
