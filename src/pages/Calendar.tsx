@@ -201,28 +201,6 @@ const Pricing = () => {
           </div>
         </div>
       </section>
-
-      {/* CTA */}
-      <section className="py-16 px-6">
-        <div className="max-w-4xl mx-auto text-center">
-          <SplitText
-            as="h2"
-            className="font-display text-4xl md:text-6xl text-on-dark mb-6"
-            splitBy="words"
-            stagger={0.04}
-          >
-            Start connecting globally today
-          </SplitText>
-          <ScrollReveal delay={0.3}>
-            <p className="text-muted-dark font-body text-sm mb-8 max-w-md mx-auto">
-              No credit card required. 14-day free trial on all plans.
-            </p>
-            <button className="font-display text-sm tracking-[0.2em] uppercase bg-lime text-on-lime px-10 py-4 hover:bg-lime/90 transition-all duration-300 glow-lime">
-              Start Free Trial
-            </button>
-          </ScrollReveal>
-        </div>
-      </section>
     </div>
   );
 };

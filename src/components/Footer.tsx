@@ -1,21 +1,39 @@
 import { companyInfo, integrations } from "@/lib/data";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 const Footer = () => {
+  const location = useLocation();
+  const isPricingPage = location.pathname === "/pricing";
+
+  const heading = isPricingPage ? (
+    <>
+      Start connecting <span className="text-lime">globally</span> today
+    </>
+  ) : (
+    <>
+      Ready to <span className="text-lime">Connect</span>?
+    </>
+  );
+
+  const description = isPricingPage
+    ? "No credit card required. 14-day free trial on all plans."
+    : "Start your free trial today. No credit card required.";
+
   return (
     <footer className="bg-dark">
-      {/* CTA strip */}
       <div className="bg-dark-lighter py-16 md:py-20 px-6 text-center relative overflow-hidden">
-        {/* Subtle glow behind heading */}
         <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
           <div className="w-[500px] h-[200px] bg-lime/5 rounded-full blur-[100px]" />
         </div>
+
         <h3 className="font-display text-3xl md:text-5xl text-on-dark mb-4 relative z-10">
-          Ready to <span className="text-lime">Connect</span>?
+          {heading}
         </h3>
+
         <p className="text-muted-dark font-body text-sm max-w-md mx-auto mb-8 relative z-10">
-          Start your free trial today. No credit card required.
+          {description}
         </p>
+
         <Link
           to="/pricing"
           className="relative z-10 inline-block font-display text-sm tracking-[0.2em] uppercase bg-lime text-on-lime px-8 py-3 hover:bg-lime/90 transition-all duration-300 glow-lime-hover"
@@ -24,7 +42,6 @@ const Footer = () => {
         </Link>
       </div>
 
-      {/* Integrations marquee */}
       <div className="overflow-hidden py-6 border-b border-lime/10">
         <div className="flex animate-marquee whitespace-nowrap">
           {[...integrations, ...integrations].map((p, i) => (
@@ -38,10 +55,8 @@ const Footer = () => {
         </div>
       </div>
 
-      {/* Main footer content */}
       <div className="max-w-7xl mx-auto px-6 md:px-10 py-16 md:py-20">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-12 md:gap-8">
-          {/* Brand — takes up more space */}
           <div className="md:col-span-6">
             <h3 className="font-display text-4xl text-lime tracking-widest mb-3">
               CALL<span className="text-on-dark">FLOW</span>
@@ -51,7 +66,6 @@ const Footer = () => {
             </p>
           </div>
 
-          {/* Pages */}
           <div className="md:col-span-3">
             <p className="text-on-dark text-xs uppercase tracking-[0.25em] mb-5 font-display font-semibold">
               Pages
@@ -74,7 +88,6 @@ const Footer = () => {
             </div>
           </div>
 
-          {/* Information */}
           <div className="md:col-span-3">
             <p className="text-on-dark text-xs uppercase tracking-[0.25em] mb-5 font-display font-semibold">
               Information
@@ -98,7 +111,6 @@ const Footer = () => {
           </div>
         </div>
 
-        {/* Divider + bottom row */}
         <div className="mt-16 pt-8 border-t border-lime/10 flex flex-col md:flex-row items-center justify-between gap-4">
           <p className="text-muted-dark text-xs font-body">
             © {new Date().getFullYear()} {companyInfo.name}. All rights
