@@ -42,7 +42,8 @@ const Platform = () => {
           </SplitText>
           <ScrollReveal delay={0.6} y={20}>
             <p className="text-muted-dark font-body text-sm mt-4 max-w-md">
-              Built for scale. Browser-based architecture, enterprise security, and seamless integrations.
+              Built for scale. Browser-based architecture, enterprise security,
+              and seamless integrations.
             </p>
           </ScrollReveal>
         </div>
@@ -56,7 +57,8 @@ const Platform = () => {
               Platform <span className="text-lime">Capabilities</span>
             </h2>
             <p className="text-muted-dark font-body text-sm max-w-lg mb-12">
-              Every tool your team needs, designed to work together seamlessly in a single browser-based platform.
+              Every tool your team needs, designed to work together seamlessly
+              in a single browser-based platform.
             </p>
           </ScrollReveal>
 
@@ -104,14 +106,13 @@ const Platform = () => {
                 Architecture
               </span>
               <h2 className="font-display text-5xl md:text-7xl text-on-dark leading-none mt-2">
-                Built for{" "}
-                <span className="text-lime">Scale</span>
+                Built for <span className="text-lime">Scale</span>
               </h2>
               <p className="text-muted-dark font-body text-sm mt-4 leading-relaxed">
                 Auto-scaling cloud infrastructure with global edge deployment.
-                99.9% uptime SLA, end-to-end encryption, and real-time
-                failover. From 1 user to 10,000+ seats — CallFlow grows with
-                your organization.
+                99.9% uptime SLA, end-to-end encryption, and real-time failover.
+                From 1 user to 10,000+ seats — CallFlow grows with your
+                organization.
               </p>
             </ScrollReveal>
           </div>
@@ -123,8 +124,7 @@ const Platform = () => {
         <div className="max-w-7xl mx-auto">
           <ScrollReveal>
             <h2 className="font-display text-4xl md:text-6xl text-on-dark mb-8">
-              Security &{" "}
-              <span className="text-lime">Compliance</span>
+              Security & <span className="text-lime">Compliance</span>
             </h2>
           </ScrollReveal>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
@@ -162,8 +162,7 @@ const Platform = () => {
         <div className="max-w-7xl mx-auto">
           <ScrollReveal>
             <h2 className="font-display text-4xl md:text-6xl text-on-dark mb-8">
-              Works With{" "}
-              <span className="text-lime">Everything</span>
+              Works With <span className="text-lime">Everything</span>
             </h2>
           </ScrollReveal>
           <div className="grid grid-cols-2 md:grid-cols-5 gap-3">
@@ -193,4 +192,3 @@ const Platform = () => {
 };
 
 export default Platform;
-

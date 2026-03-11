@@ -23,8 +23,13 @@ const showcaseStats = [
 ];
 
 const partnerLogos = [
-  "Twilio", "LiveKit", "Stripe", "Slack",
-  "Salesforce", "HubSpot", "Zapier",
+  "Twilio",
+  "LiveKit",
+  "Stripe",
+  "Slack",
+  "Salesforce",
+  "HubSpot",
+  "Zapier",
 ];
 
 /* Premium features for horizontal scroll section */
@@ -145,7 +150,7 @@ const Index = () => {
           opacity: 0,
           ease: "none",
         },
-        0
+        0,
       );
 
       // Fade out hero content slightly faster
@@ -153,7 +158,7 @@ const Index = () => {
         tl.to(
           heroContentRef.current,
           { opacity: 0, scale: 0.9, ease: "none" },
-          0
+          0,
         );
       }
 
@@ -163,7 +168,7 @@ const Index = () => {
           tagline,
           { opacity: 0, y: -30 },
           { opacity: 1, y: 0, ease: "power3.out" },
-          0.1
+          0.1,
         );
       }
 
@@ -173,7 +178,7 @@ const Index = () => {
           statItems,
           { opacity: 0, y: 50, scale: 0.9 },
           { opacity: 1, y: 0, scale: 1, stagger: 0.06, ease: "power3.out" },
-          0.15
+          0.15,
         );
       }
 
@@ -183,7 +188,7 @@ const Index = () => {
           desc,
           { opacity: 0, y: 20 },
           { opacity: 1, y: 0, ease: "power3.out" },
-          0.3
+          0.3,
         );
       }
 
@@ -193,7 +198,7 @@ const Index = () => {
           logoDivider,
           { scaleX: 0 },
           { scaleX: 1, ease: "power2.out" },
-          0.35
+          0.35,
         );
       }
       if (logos.length) {
@@ -201,7 +206,7 @@ const Index = () => {
           logos,
           { opacity: 0, y: 15 },
           { opacity: 1, y: 0, stagger: 0.03, ease: "power2.out" },
-          0.4
+          0.4,
         );
       }
     }
@@ -259,7 +264,7 @@ const Index = () => {
               end: "top 30%",
               scrub: 1,
             },
-          }
+          },
         );
       }
     }
@@ -334,14 +339,17 @@ const Index = () => {
 
           {/* Description */}
           <p className="sc-desc">
-            One platform for calls, meetings, and enterprise voice — from any browser, anywhere.
+            One platform for calls, meetings, and enterprise voice — from any
+            browser, anywhere.
           </p>
 
           {/* Divider + partner logos */}
           <div className="sc-logo-divider" />
           <div className="sc-logos-row">
             {partnerLogos.map((name) => (
-              <span key={name} className="sc-logo">{name}</span>
+              <span key={name} className="sc-logo">
+                {name}
+              </span>
             ))}
           </div>
         </div>
@@ -366,7 +374,10 @@ const Index = () => {
           </div>
 
           {/* Hero content */}
-          <div ref={heroContentRef} className="relative z-10 text-center px-6 max-w-5xl mx-auto">
+          <div
+            ref={heroContentRef}
+            className="relative z-10 text-center px-6 max-w-5xl mx-auto"
+          >
             <SplitText
               as="p"
               className="text-lime font-body text-sm tracking-[0.3em] uppercase mb-6"
@@ -465,8 +476,14 @@ const Index = () => {
           }}
         />
 
-        <div ref={quoteRef} className="relative z-10 max-w-5xl mx-auto text-center">
-          <p className="text-lime font-body text-xs tracking-[0.3em] uppercase mb-10 quote-word" style={{ display: 'inline-block' }}>
+        <div
+          ref={quoteRef}
+          className="relative z-10 max-w-5xl mx-auto text-center"
+        >
+          <p
+            className="text-lime font-body text-xs tracking-[0.3em] uppercase mb-10 quote-word"
+            style={{ display: "inline-block" }}
+          >
             Why CallFlow
           </p>
           <h2 className="font-display text-4xl md:text-6xl lg:text-7xl text-on-dark leading-[1.1] tracking-tight uppercase">
@@ -494,7 +511,10 @@ const Index = () => {
       </section>
 
       {/* ===== PREMIUM FEATURES - HORIZONTAL SCROLL ===== */}
-      <section ref={featuresScrollRef} className="relative h-screen overflow-hidden">
+      <section
+        ref={featuresScrollRef}
+        className="relative h-screen overflow-hidden"
+      >
         {/* Grid pattern background */}
         <div className="absolute inset-0 z-0">
           <div
@@ -536,7 +556,8 @@ const Index = () => {
               <span className="font-serif-accent">powered by simplicity</span>
             </h3>
             <p className="text-muted-dark font-body text-xs leading-relaxed max-w-[280px]">
-              Everything you need for seamless global communication, wrapped in a beautiful interface
+              Everything you need for seamless global communication, wrapped in
+              a beautiful interface
             </p>
           </div>
 
@@ -561,7 +582,9 @@ const Index = () => {
                     key={stat.label}
                     className="flex items-center justify-between border-t border-lime/5 pt-1.5"
                   >
-                    <span className="font-body text-[10px] text-muted-dark">{stat.label}</span>
+                    <span className="font-body text-[10px] text-muted-dark">
+                      {stat.label}
+                    </span>
                     <span className="font-display text-xs text-lime tracking-wider">
                       {stat.value}
                     </span>
@@ -605,8 +628,16 @@ const Index = () => {
             fill="none"
             preserveAspectRatio="none"
           >
-            <path d="M0,200 C300,100 600,350 1200,150" stroke="hsl(var(--lime-dark))" strokeWidth="1.5" />
-            <path d="M0,400 C400,300 800,500 1200,350" stroke="hsl(var(--lime-dark))" strokeWidth="1.5" />
+            <path
+              d="M0,200 C300,100 600,350 1200,150"
+              stroke="hsl(var(--lime-dark))"
+              strokeWidth="1.5"
+            />
+            <path
+              d="M0,400 C400,300 800,500 1200,350"
+              stroke="hsl(var(--lime-dark))"
+              strokeWidth="1.5"
+            />
           </svg>
         </div>
 
@@ -626,7 +657,10 @@ const Index = () => {
                 <div className="mb-6">
                   <span
                     className="font-serif-accent text-8xl md:text-[10rem] leading-none"
-                    style={{ WebkitTextStroke: "1.5px hsl(var(--lime-dark))", color: "transparent" }}
+                    style={{
+                      WebkitTextStroke: "1.5px hsl(var(--lime-dark))",
+                      color: "transparent",
+                    }}
                   >
                     01
                   </span>
@@ -638,7 +672,8 @@ const Index = () => {
                   <span className="font-serif-accent">Your Browser</span>
                 </h4>
                 <p className="font-body text-sm text-muted-dark leading-relaxed max-w-[240px] mx-auto">
-                  No downloads needed. Simply visit our website from any modern browser on desktop or mobile.
+                  No downloads needed. Simply visit our website from any modern
+                  browser on desktop or mobile.
                 </p>
               </div>
             </ScrollReveal>
@@ -649,7 +684,10 @@ const Index = () => {
                 <div className="mb-6">
                   <span
                     className="font-serif-accent text-8xl md:text-[10rem] leading-none"
-                    style={{ WebkitTextStroke: "1.5px hsl(var(--lime-dark))", color: "transparent" }}
+                    style={{
+                      WebkitTextStroke: "1.5px hsl(var(--lime-dark))",
+                      color: "transparent",
+                    }}
                   >
                     02
                   </span>
@@ -661,7 +699,8 @@ const Index = () => {
                   <span className="font-serif-accent">Account</span>
                 </h4>
                 <p className="font-body text-sm text-muted-dark leading-relaxed max-w-[240px] mx-auto">
-                  Quick signup with email or Google. Add credits to your wallet and you're ready to call anywhere.
+                  Quick signup with email or Google. Add credits to your wallet
+                  and you're ready to call anywhere.
                 </p>
               </div>
             </ScrollReveal>
@@ -672,7 +711,10 @@ const Index = () => {
                 <div className="mb-6">
                   <span
                     className="font-serif-accent text-8xl md:text-[10rem] leading-none"
-                    style={{ WebkitTextStroke: "1.5px hsl(var(--lime-dark))", color: "transparent" }}
+                    style={{
+                      WebkitTextStroke: "1.5px hsl(var(--lime-dark))",
+                      color: "transparent",
+                    }}
                   >
                     03
                   </span>
@@ -684,7 +726,8 @@ const Index = () => {
                   <span className="font-serif-accent">Worldwide</span>
                 </h4>
                 <p className="font-body text-sm text-muted-dark leading-relaxed max-w-[240px] mx-auto">
-                  Dial any number worldwide with crystal-clear HD quality. Track usage and manage contacts easily.
+                  Dial any number worldwide with crystal-clear HD quality. Track
+                  usage and manage contacts easily.
                 </p>
               </div>
             </ScrollReveal>
@@ -722,11 +765,14 @@ const Index = () => {
               "linear-gradient(135deg, hsl(220 8% 10%) 0%, hsl(220 8% 14%) 100%)",
           }}
         >
-          <div className="absolute inset-0 opacity-[0.03]" style={{
-            backgroundImage:
-              "radial-gradient(circle at 30% 40%, hsl(var(--lime)) 1px, transparent 1px)",
-            backgroundSize: "30px 30px",
-          }} />
+          <div
+            className="absolute inset-0 opacity-[0.03]"
+            style={{
+              backgroundImage:
+                "radial-gradient(circle at 30% 40%, hsl(var(--lime)) 1px, transparent 1px)",
+              backgroundSize: "30px 30px",
+            }}
+          />
           <div className="absolute inset-0 bg-gradient-to-t from-dark via-dark/40 to-transparent" />
           <div className="relative z-10">
             <ScrollReveal>
@@ -753,11 +799,14 @@ const Index = () => {
               "linear-gradient(225deg, hsl(220 8% 10%) 0%, hsl(220 8% 8%) 100%)",
           }}
         >
-          <div className="absolute inset-0 opacity-[0.03]" style={{
-            backgroundImage:
-              "radial-gradient(circle at 70% 60%, hsl(var(--lime)) 1px, transparent 1px)",
-            backgroundSize: "25px 25px",
-          }} />
+          <div
+            className="absolute inset-0 opacity-[0.03]"
+            style={{
+              backgroundImage:
+                "radial-gradient(circle at 70% 60%, hsl(var(--lime)) 1px, transparent 1px)",
+              backgroundSize: "25px 25px",
+            }}
+          />
           <div className="absolute inset-0 bg-gradient-to-t from-dark via-dark/40 to-transparent" />
           <div className="relative z-10">
             <ScrollReveal>
@@ -767,8 +816,9 @@ const Index = () => {
                 <span className="text-lime">MEETINGS</span>
               </h2>
               <p className="mt-4 text-on-dark/70 font-body text-sm max-w-xs">
-                Free unlimited <strong className="text-lime">HD meetings</strong>{" "}
-                with screen sharing, powered by LiveKit.
+                Free unlimited{" "}
+                <strong className="text-lime">HD meetings</strong> with screen
+                sharing, powered by LiveKit.
               </p>
             </ScrollReveal>
           </div>
@@ -776,7 +826,10 @@ const Index = () => {
       </section>
 
       {/* ===== STATS BANNER ===== */}
-      <section ref={statsRef} className="bg-lime py-16 md:py-24 sticky top-0 z-10">
+      <section
+        ref={statsRef}
+        className="bg-lime py-16 md:py-24 sticky top-0 z-10"
+      >
         <div className="max-w-7xl mx-auto px-6">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
             {stats.map((stat) => (
@@ -802,14 +855,16 @@ const Index = () => {
       <section
         className="relative z-20 py-24 md:py-36 px-6 overflow-hidden"
         style={{
-          background: "linear-gradient(180deg, hsl(220 8% 6%) 0%, hsl(220 8% 9%) 50%, hsl(220 8% 6%) 100%)",
+          background:
+            "linear-gradient(180deg, hsl(220 8% 6%) 0%, hsl(220 8% 9%) 50%, hsl(220 8% 6%) 100%)",
         }}
       >
         {/* Subtle glow */}
         <div
           className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] pointer-events-none"
           style={{
-            background: "radial-gradient(circle, hsl(var(--lime-dark) / 0.04) 0%, transparent 70%)",
+            background:
+              "radial-gradient(circle, hsl(var(--lime-dark) / 0.04) 0%, transparent 70%)",
           }}
         />
 
@@ -825,7 +880,8 @@ const Index = () => {
                 <span className="font-serif-accent">worldwide</span>
               </h2>
               <p className="text-muted-dark font-body text-sm max-w-md mx-auto mt-5">
-                See how businesses like yours are transforming their global communications
+                See how businesses like yours are transforming their global
+                communications
               </p>
             </div>
           </ScrollReveal>
@@ -835,7 +891,8 @@ const Index = () => {
             <div
               className="relative p-10 md:p-14 mb-14 overflow-hidden"
               style={{
-                background: "linear-gradient(135deg, hsl(220 8% 12%) 0%, hsl(220 8% 10%) 100%)",
+                background:
+                  "linear-gradient(135deg, hsl(220 8% 12%) 0%, hsl(220 8% 10%) 100%)",
                 border: "1px solid hsl(var(--lime-dark) / 0.15)",
                 borderRadius: "8px",
               }}
@@ -844,13 +901,16 @@ const Index = () => {
               <div
                 className="absolute top-0 right-0 w-40 h-40 pointer-events-none"
                 style={{
-                  background: "radial-gradient(circle at top right, hsl(var(--lime-dark) / 0.08), transparent 70%)",
+                  background:
+                    "radial-gradient(circle at top right, hsl(var(--lime-dark) / 0.08), transparent 70%)",
                 }}
               />
               {/* Star rating */}
               <div className="flex gap-1 mb-6">
                 {Array.from({ length: 5 }).map((_, s) => (
-                  <span key={s} className="text-yellow-400 text-lg">★</span>
+                  <span key={s} className="text-yellow-400 text-lg">
+                    ★
+                  </span>
                 ))}
               </div>
               <span className="text-lime text-6xl font-serif-accent absolute top-8 right-12 opacity-10">
@@ -864,7 +924,8 @@ const Index = () => {
                 <div
                   className="w-12 h-12 rounded-full flex items-center justify-center"
                   style={{
-                    background: "linear-gradient(135deg, hsl(var(--lime-dark) / 0.3), hsl(var(--lime-dark) / 0.1))",
+                    background:
+                      "linear-gradient(135deg, hsl(var(--lime-dark) / 0.3), hsl(var(--lime-dark) / 0.1))",
                     border: "1px solid hsl(var(--lime-dark) / 0.3)",
                   }}
                 >
@@ -891,7 +952,8 @@ const Index = () => {
                 <div
                   className="relative p-7 h-full transition-all duration-500 hover:-translate-y-1 group"
                   style={{
-                    background: "linear-gradient(180deg, hsl(220 8% 13%) 0%, hsl(220 8% 10%) 100%)",
+                    background:
+                      "linear-gradient(180deg, hsl(220 8% 13%) 0%, hsl(220 8% 10%) 100%)",
                     border: "1px solid hsl(var(--lime-dark) / 0.08)",
                     borderRadius: "6px",
                   }}
@@ -900,13 +962,16 @@ const Index = () => {
                   <div
                     className="absolute top-0 left-6 right-6 h-[2px] opacity-0 group-hover:opacity-100 transition-opacity duration-500"
                     style={{
-                      background: "linear-gradient(90deg, transparent, hsl(var(--lime-dark) / 0.5), transparent)",
+                      background:
+                        "linear-gradient(90deg, transparent, hsl(var(--lime-dark) / 0.5), transparent)",
                     }}
                   />
                   {/* Stars */}
                   <div className="flex gap-0.5 mb-5">
                     {Array.from({ length: 5 }).map((_, s) => (
-                      <span key={s} className="text-yellow-400 text-base">★</span>
+                      <span key={s} className="text-yellow-400 text-base">
+                        ★
+                      </span>
                     ))}
                   </div>
                   <p className="font-body text-sm text-on-dark leading-relaxed mb-7">
@@ -917,7 +982,8 @@ const Index = () => {
                     <div
                       className="w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0"
                       style={{
-                        background: "linear-gradient(135deg, hsl(var(--lime-dark) / 0.25), hsl(var(--lime-dark) / 0.08))",
+                        background:
+                          "linear-gradient(135deg, hsl(var(--lime-dark) / 0.25), hsl(var(--lime-dark) / 0.08))",
                         border: "1px solid hsl(var(--lime-dark) / 0.2)",
                       }}
                     >
@@ -945,14 +1011,16 @@ const Index = () => {
       <section
         className="relative z-20 py-24 md:py-36 px-6 overflow-hidden"
         style={{
-          background: "linear-gradient(180deg, hsl(220 8% 7%) 0%, hsl(220 8% 10%) 50%, hsl(220 8% 7%) 100%)",
+          background:
+            "linear-gradient(180deg, hsl(220 8% 7%) 0%, hsl(220 8% 10%) 50%, hsl(220 8% 7%) 100%)",
         }}
       >
         {/* Subtle glow */}
         <div
           className="absolute top-1/3 left-1/2 -translate-x-1/2 w-[500px] h-[500px] pointer-events-none"
           style={{
-            background: "radial-gradient(circle, hsl(var(--lime-dark) / 0.05) 0%, transparent 70%)",
+            background:
+              "radial-gradient(circle, hsl(var(--lime-dark) / 0.05) 0%, transparent 70%)",
           }}
         />
 
@@ -979,7 +1047,8 @@ const Index = () => {
               <div
                 className="relative p-8 h-full transition-all duration-500 hover:-translate-y-1"
                 style={{
-                  background: "linear-gradient(180deg, hsl(220 8% 13%) 0%, hsl(220 8% 10%) 100%)",
+                  background:
+                    "linear-gradient(180deg, hsl(220 8% 13%) 0%, hsl(220 8% 10%) 100%)",
                   border: "1px solid hsl(var(--lime-dark) / 0.08)",
                   borderRadius: "8px",
                 }}
@@ -989,16 +1058,26 @@ const Index = () => {
                 </p>
                 <div className="flex items-baseline gap-1 mb-2">
                   <span className="font-display text-5xl text-on-dark">$5</span>
-                  <span className="font-body text-sm text-muted-dark">/month</span>
+                  <span className="font-body text-sm text-muted-dark">
+                    /month
+                  </span>
                 </div>
                 <p className="font-body text-xs text-muted-dark mb-8">
                   For solo use with light needs.
                 </p>
                 <div className="space-y-3 mb-10">
-                  {["Call 50+ countries", "HD browser calling", "Basic support", "Call history", "Wallet system"].map((f) => (
+                  {[
+                    "Call 50+ countries",
+                    "HD browser calling",
+                    "Basic support",
+                    "Call history",
+                    "Wallet system",
+                  ].map((f) => (
                     <div key={f} className="flex items-center gap-2">
                       <span className="text-lime text-xs">✓</span>
-                      <span className="font-body text-sm text-on-dark">{f}</span>
+                      <span className="font-body text-sm text-on-dark">
+                        {f}
+                      </span>
                     </div>
                   ))}
                 </div>
@@ -1021,7 +1100,8 @@ const Index = () => {
               <div
                 className="relative p-8 h-full transition-all duration-500 hover:-translate-y-1 md:scale-105"
                 style={{
-                  background: "linear-gradient(180deg, hsl(220 8% 14%) 0%, hsl(220 8% 10%) 100%)",
+                  background:
+                    "linear-gradient(180deg, hsl(220 8% 14%) 0%, hsl(220 8% 10%) 100%)",
                   border: "1px solid hsl(var(--lime-dark) / 0.25)",
                   borderRadius: "8px",
                   boxShadow: "0 0 40px hsl(var(--lime-dark) / 0.06)",
@@ -1044,17 +1124,30 @@ const Index = () => {
                   </span>
                 </div>
                 <div className="flex items-baseline gap-1 mb-2">
-                  <span className="font-display text-5xl text-on-dark">$50</span>
-                  <span className="font-body text-sm text-muted-dark">/month</span>
+                  <span className="font-display text-5xl text-on-dark">
+                    $50
+                  </span>
+                  <span className="font-body text-sm text-muted-dark">
+                    /month
+                  </span>
                 </div>
                 <p className="font-body text-xs text-muted-dark mb-8">
                   Best value for teams
                 </p>
                 <div className="space-y-3 mb-10">
-                  {["All Starter features", "190+ countries", "Call recording", "Priority support", "Team features", "Organization management"].map((f) => (
+                  {[
+                    "All Starter features",
+                    "190+ countries",
+                    "Call recording",
+                    "Priority support",
+                    "Team features",
+                    "Organization management",
+                  ].map((f) => (
                     <div key={f} className="flex items-center gap-2">
                       <span className="text-lime text-xs">✓</span>
-                      <span className="font-body text-sm text-on-dark">{f}</span>
+                      <span className="font-body text-sm text-on-dark">
+                        {f}
+                      </span>
                     </div>
                   ))}
                 </div>
@@ -1077,7 +1170,8 @@ const Index = () => {
               <div
                 className="relative p-8 h-full transition-all duration-500 hover:-translate-y-1"
                 style={{
-                  background: "linear-gradient(180deg, hsl(220 8% 13%) 0%, hsl(220 8% 10%) 100%)",
+                  background:
+                    "linear-gradient(180deg, hsl(220 8% 13%) 0%, hsl(220 8% 10%) 100%)",
                   border: "1px solid hsl(var(--lime-dark) / 0.08)",
                   borderRadius: "8px",
                 }}
@@ -1086,17 +1180,30 @@ const Index = () => {
                   Enterprise
                 </p>
                 <div className="flex items-baseline gap-1 mb-2">
-                  <span className="font-display text-5xl text-on-dark">$200</span>
-                  <span className="font-body text-sm text-muted-dark">/month</span>
+                  <span className="font-display text-5xl text-on-dark">
+                    $200
+                  </span>
+                  <span className="font-body text-sm text-muted-dark">
+                    /month
+                  </span>
                 </div>
                 <p className="font-body text-xs text-muted-dark mb-8">
                   For team use with custom needs.
                 </p>
                 <div className="space-y-3 mb-10">
-                  {["All Business features", "Dedicated manager", "Custom numbers", "API access", "SLA guarantee", "Custom integrations"].map((f) => (
+                  {[
+                    "All Business features",
+                    "Dedicated manager",
+                    "Custom numbers",
+                    "API access",
+                    "SLA guarantee",
+                    "Custom integrations",
+                  ].map((f) => (
                     <div key={f} className="flex items-center gap-2">
                       <span className="text-lime text-xs">✓</span>
-                      <span className="font-body text-sm text-on-dark">{f}</span>
+                      <span className="font-body text-sm text-on-dark">
+                        {f}
+                      </span>
                     </div>
                   ))}
                 </div>
@@ -1121,4 +1228,3 @@ const Index = () => {
 };
 
 export default Index;
-
