@@ -87,10 +87,10 @@ const ParticleNetwork = () => {
     parent.addEventListener("mousemove", handleMouseMove);
     parent.addEventListener("mouseleave", handleMouseLeave);
 
-    // Lime color: hsl(80, 70%, 45%) → rgb(138, 163, 34) approx
-    const LIME_R = 138;
-    const LIME_G = 163;
-    const LIME_B = 34;
+    // Gold accent tuned to the warm yellow palette
+    const LIME_R = 232;
+    const LIME_G = 178;
+    const LIME_B = 74;
 
     // Animation loop
     const animate = () => {

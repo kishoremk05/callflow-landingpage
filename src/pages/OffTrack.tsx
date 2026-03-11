@@ -23,7 +23,7 @@ const Platform = () => {
           className="absolute inset-0"
           style={{
             background:
-              "radial-gradient(ellipse at 70% 50%, hsl(80 100% 50% / 0.06) 0%, hsl(120 10% 6%) 70%)",
+              "radial-gradient(ellipse at 70% 50%, hsl(var(--lime) / 0.06) 0%, hsl(220 8% 6%) 70%)",
           }}
         />
         <div className="absolute inset-0 bg-gradient-to-t from-dark via-dark/60 to-dark/20" />
@@ -86,7 +86,7 @@ const Platform = () => {
           className="relative min-h-[50vh] md:min-h-[60vh] overflow-hidden flex items-center"
           style={{
             background:
-              "linear-gradient(135deg, hsl(120 10% 8%) 0%, hsl(120 10% 12%) 50%, hsl(120 10% 8%) 100%)",
+              "linear-gradient(135deg, hsl(220 8% 8%) 0%, hsl(220 8% 12%) 50%, hsl(220 8% 8%) 100%)",
           }}
         >
           <div
@@ -193,3 +193,4 @@ const Platform = () => {
 };
 
 export default Platform;
+

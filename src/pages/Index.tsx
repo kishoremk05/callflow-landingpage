@@ -284,7 +284,7 @@ const Index = () => {
       });
     }
 
-    // How It Works — blur-to-clear step reveal (uses onEnter for reliability after pin)
+    // How It Works - blur-to-clear step reveal (uses onEnter for reliability after pin)
     if (howItWorksRef.current) {
       const steps = howItWorksRef.current.querySelectorAll(".hiw-step");
       if (steps.length) {
@@ -317,7 +317,7 @@ const Index = () => {
     <div className="bg-dark min-h-screen">
       {/* ===== HERO WITH ZOOM-OUT ===== */}
       <div ref={heroWrapperRef} className="hero-zoom-wrapper">
-        {/* Showcase — clean stats reveal behind hero */}
+        {/* Showcase - clean stats reveal behind hero */}
         <div ref={showcaseRef} className="hero-showcase-bg">
           {/* Tagline */}
           <p className="sc-tagline">TRUSTED BY TEAMS WORLDWIDE</p>
@@ -357,7 +357,7 @@ const Index = () => {
             className="absolute inset-0"
             style={{
               background:
-                "radial-gradient(ellipse at 50% 30%, hsl(80 100% 50% / 0.08) 0%, hsl(120 10% 6%) 70%)",
+                "radial-gradient(ellipse at 50% 30%, hsl(var(--lime) / 0.08) 0%, hsl(220 8% 6%) 70%)",
             }}
           >
             {/* Animated particle network */}
@@ -452,7 +452,7 @@ const Index = () => {
         className="relative py-28 md:py-44 px-6 overflow-hidden"
         style={{
           background:
-            "radial-gradient(ellipse at 50% 50%, hsl(80 100% 50% / 0.04) 0%, hsl(120 10% 6%) 60%)",
+            "radial-gradient(ellipse at 50% 50%, hsl(var(--lime) / 0.04) 0%, hsl(220 8% 6%) 60%)",
         }}
       >
         {/* Subtle decorative lines */}
@@ -493,7 +493,7 @@ const Index = () => {
         </div>
       </section>
 
-      {/* ===== PREMIUM FEATURES — HORIZONTAL SCROLL ===== */}
+      {/* ===== PREMIUM FEATURES - HORIZONTAL SCROLL ===== */}
       <section ref={featuresScrollRef} className="relative h-screen overflow-hidden">
         {/* Grid pattern background */}
         <div className="absolute inset-0 z-0">
@@ -501,7 +501,7 @@ const Index = () => {
             className="absolute inset-0 opacity-[0.25]"
             style={{
               backgroundImage:
-                "linear-gradient(hsl(80 70% 45%) 2px, transparent 2px), linear-gradient(90deg, hsl(80 70% 45%) 2px, transparent 2px)",
+                "linear-gradient(hsl(var(--lime-dark)) 2px, transparent 2px), linear-gradient(90deg, hsl(var(--lime-dark)) 2px, transparent 2px)",
               backgroundSize: "120px 120px",
             }}
           />
@@ -510,7 +510,7 @@ const Index = () => {
             className="absolute inset-0"
             style={{
               background:
-                "radial-gradient(ellipse at 50% 50%, hsl(80 100% 50% / 0.04) 0%, transparent 60%)",
+                "radial-gradient(ellipse at 50% 50%, hsl(var(--lime) / 0.04) 0%, transparent 60%)",
             }}
           />
           {/* Edge fade so grid blends into dark */}
@@ -518,7 +518,7 @@ const Index = () => {
           <div className="absolute inset-0 bg-gradient-to-b from-dark via-transparent to-dark opacity-60" />
         </div>
 
-        {/* Single horizontal track — header + zig-zag cards all scroll together */}
+        {/* Single horizontal track - header + zig-zag cards all scroll together */}
         <div
           ref={featuresTrackRef}
           className="absolute top-0 left-0 flex items-center gap-8 h-full"
@@ -540,7 +540,7 @@ const Index = () => {
             </p>
           </div>
 
-          {/* Feature cards — zig-zag */}
+          {/* Feature cards - zig-zag */}
           {premiumFeatures.map((feat, i) => (
             <div
               key={feat.title}
@@ -594,7 +594,7 @@ const Index = () => {
         className="relative z-20 py-28 md:py-40 px-6 overflow-hidden"
         style={{
           background:
-            "linear-gradient(180deg, hsl(120 10% 7%) 0%, hsl(120 10% 9%) 100%)",
+            "linear-gradient(180deg, hsl(220 8% 7%) 0%, hsl(220 8% 9%) 100%)",
         }}
       >
         {/* Decorative organic curves */}
@@ -605,8 +605,8 @@ const Index = () => {
             fill="none"
             preserveAspectRatio="none"
           >
-            <path d="M0,200 C300,100 600,350 1200,150" stroke="hsl(80,70%,45%)" strokeWidth="1.5" />
-            <path d="M0,400 C400,300 800,500 1200,350" stroke="hsl(80,70%,45%)" strokeWidth="1.5" />
+            <path d="M0,200 C300,100 600,350 1200,150" stroke="hsl(var(--lime-dark))" strokeWidth="1.5" />
+            <path d="M0,400 C400,300 800,500 1200,350" stroke="hsl(var(--lime-dark))" strokeWidth="1.5" />
           </svg>
         </div>
 
@@ -626,7 +626,7 @@ const Index = () => {
                 <div className="mb-6">
                   <span
                     className="font-serif-accent text-8xl md:text-[10rem] leading-none"
-                    style={{ WebkitTextStroke: "1.5px hsl(80,70%,45%)", color: "transparent" }}
+                    style={{ WebkitTextStroke: "1.5px hsl(var(--lime-dark))", color: "transparent" }}
                   >
                     01
                   </span>
@@ -649,7 +649,7 @@ const Index = () => {
                 <div className="mb-6">
                   <span
                     className="font-serif-accent text-8xl md:text-[10rem] leading-none"
-                    style={{ WebkitTextStroke: "1.5px hsl(80,70%,45%)", color: "transparent" }}
+                    style={{ WebkitTextStroke: "1.5px hsl(var(--lime-dark))", color: "transparent" }}
                   >
                     02
                   </span>
@@ -672,7 +672,7 @@ const Index = () => {
                 <div className="mb-6">
                   <span
                     className="font-serif-accent text-8xl md:text-[10rem] leading-none"
-                    style={{ WebkitTextStroke: "1.5px hsl(80,70%,45%)", color: "transparent" }}
+                    style={{ WebkitTextStroke: "1.5px hsl(var(--lime-dark))", color: "transparent" }}
                   >
                     03
                   </span>
@@ -697,8 +697,8 @@ const Index = () => {
                 href="#"
                 className="inline-flex items-center gap-2 px-8 py-4 font-display text-sm uppercase tracking-widest transition-all duration-300 hover:scale-105"
                 style={{
-                  background: "hsl(80 70% 45%)",
-                  color: "hsl(120 10% 10%)",
+                  background: "hsl(var(--lime-dark))",
+                  color: "hsl(220 8% 10%)",
                 }}
               >
                 Get Started Free →
@@ -719,7 +719,7 @@ const Index = () => {
           className="relative group overflow-hidden flex items-end p-8 md:p-12 min-h-[50vh]"
           style={{
             background:
-              "linear-gradient(135deg, hsl(120 10% 10%) 0%, hsl(120 10% 14%) 100%)",
+              "linear-gradient(135deg, hsl(220 8% 10%) 0%, hsl(220 8% 14%) 100%)",
           }}
         >
           <div className="absolute inset-0 opacity-[0.03]" style={{
@@ -750,7 +750,7 @@ const Index = () => {
           className="relative group overflow-hidden flex items-end p-8 md:p-12 min-h-[50vh]"
           style={{
             background:
-              "linear-gradient(225deg, hsl(120 10% 10%) 0%, hsl(120 10% 8%) 100%)",
+              "linear-gradient(225deg, hsl(220 8% 10%) 0%, hsl(220 8% 8%) 100%)",
           }}
         >
           <div className="absolute inset-0 opacity-[0.03]" style={{
@@ -802,14 +802,14 @@ const Index = () => {
       <section
         className="relative z-20 py-24 md:py-36 px-6 overflow-hidden"
         style={{
-          background: "linear-gradient(180deg, hsl(120 10% 6%) 0%, hsl(120 10% 9%) 50%, hsl(120 10% 6%) 100%)",
+          background: "linear-gradient(180deg, hsl(220 8% 6%) 0%, hsl(220 8% 9%) 50%, hsl(220 8% 6%) 100%)",
         }}
       >
         {/* Subtle glow */}
         <div
           className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] pointer-events-none"
           style={{
-            background: "radial-gradient(circle, hsl(80 70% 45% / 0.04) 0%, transparent 70%)",
+            background: "radial-gradient(circle, hsl(var(--lime-dark) / 0.04) 0%, transparent 70%)",
           }}
         />
 
@@ -835,8 +835,8 @@ const Index = () => {
             <div
               className="relative p-10 md:p-14 mb-14 overflow-hidden"
               style={{
-                background: "linear-gradient(135deg, hsl(120 10% 12%) 0%, hsl(120 10% 10%) 100%)",
-                border: "1px solid hsl(80 70% 45% / 0.15)",
+                background: "linear-gradient(135deg, hsl(220 8% 12%) 0%, hsl(220 8% 10%) 100%)",
+                border: "1px solid hsl(var(--lime-dark) / 0.15)",
                 borderRadius: "8px",
               }}
             >
@@ -844,7 +844,7 @@ const Index = () => {
               <div
                 className="absolute top-0 right-0 w-40 h-40 pointer-events-none"
                 style={{
-                  background: "radial-gradient(circle at top right, hsl(80 70% 45% / 0.08), transparent 70%)",
+                  background: "radial-gradient(circle at top right, hsl(var(--lime-dark) / 0.08), transparent 70%)",
                 }}
               />
               {/* Star rating */}
@@ -864,8 +864,8 @@ const Index = () => {
                 <div
                   className="w-12 h-12 rounded-full flex items-center justify-center"
                   style={{
-                    background: "linear-gradient(135deg, hsl(80 70% 45% / 0.3), hsl(80 70% 45% / 0.1))",
-                    border: "1px solid hsl(80 70% 45% / 0.3)",
+                    background: "linear-gradient(135deg, hsl(var(--lime-dark) / 0.3), hsl(var(--lime-dark) / 0.1))",
+                    border: "1px solid hsl(var(--lime-dark) / 0.3)",
                   }}
                 >
                   <span className="font-display text-base text-lime">
@@ -891,8 +891,8 @@ const Index = () => {
                 <div
                   className="relative p-7 h-full transition-all duration-500 hover:-translate-y-1 group"
                   style={{
-                    background: "linear-gradient(180deg, hsl(120 10% 13%) 0%, hsl(120 10% 10%) 100%)",
-                    border: "1px solid hsl(80 70% 45% / 0.08)",
+                    background: "linear-gradient(180deg, hsl(220 8% 13%) 0%, hsl(220 8% 10%) 100%)",
+                    border: "1px solid hsl(var(--lime-dark) / 0.08)",
                     borderRadius: "6px",
                   }}
                 >
@@ -900,7 +900,7 @@ const Index = () => {
                   <div
                     className="absolute top-0 left-6 right-6 h-[2px] opacity-0 group-hover:opacity-100 transition-opacity duration-500"
                     style={{
-                      background: "linear-gradient(90deg, transparent, hsl(80 70% 45% / 0.5), transparent)",
+                      background: "linear-gradient(90deg, transparent, hsl(var(--lime-dark) / 0.5), transparent)",
                     }}
                   />
                   {/* Stars */}
@@ -917,8 +917,8 @@ const Index = () => {
                     <div
                       className="w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0"
                       style={{
-                        background: "linear-gradient(135deg, hsl(80 70% 45% / 0.25), hsl(80 70% 45% / 0.08))",
-                        border: "1px solid hsl(80 70% 45% / 0.2)",
+                        background: "linear-gradient(135deg, hsl(var(--lime-dark) / 0.25), hsl(var(--lime-dark) / 0.08))",
+                        border: "1px solid hsl(var(--lime-dark) / 0.2)",
                       }}
                     >
                       <span className="font-display text-xs text-lime">
@@ -945,14 +945,14 @@ const Index = () => {
       <section
         className="relative z-20 py-24 md:py-36 px-6 overflow-hidden"
         style={{
-          background: "linear-gradient(180deg, hsl(120 10% 7%) 0%, hsl(120 10% 10%) 50%, hsl(120 10% 7%) 100%)",
+          background: "linear-gradient(180deg, hsl(220 8% 7%) 0%, hsl(220 8% 10%) 50%, hsl(220 8% 7%) 100%)",
         }}
       >
         {/* Subtle glow */}
         <div
           className="absolute top-1/3 left-1/2 -translate-x-1/2 w-[500px] h-[500px] pointer-events-none"
           style={{
-            background: "radial-gradient(circle, hsl(80 70% 45% / 0.05) 0%, transparent 70%)",
+            background: "radial-gradient(circle, hsl(var(--lime-dark) / 0.05) 0%, transparent 70%)",
           }}
         />
 
@@ -979,8 +979,8 @@ const Index = () => {
               <div
                 className="relative p-8 h-full transition-all duration-500 hover:-translate-y-1"
                 style={{
-                  background: "linear-gradient(180deg, hsl(120 10% 13%) 0%, hsl(120 10% 10%) 100%)",
-                  border: "1px solid hsl(80 70% 45% / 0.08)",
+                  background: "linear-gradient(180deg, hsl(220 8% 13%) 0%, hsl(220 8% 10%) 100%)",
+                  border: "1px solid hsl(var(--lime-dark) / 0.08)",
                   borderRadius: "8px",
                 }}
               >
@@ -1006,7 +1006,7 @@ const Index = () => {
                   href="#"
                   className="block w-full text-center py-3.5 font-display text-sm uppercase tracking-widest transition-all duration-300 hover:opacity-90"
                   style={{
-                    background: "hsl(120 10% 20%)",
+                    background: "hsl(220 8% 20%)",
                     color: "hsl(0 0% 100%)",
                     borderRadius: "4px",
                   }}
@@ -1016,15 +1016,15 @@ const Index = () => {
               </div>
             </ScrollReveal>
 
-            {/* Business — Most Popular */}
+            {/* Business - Most Popular */}
             <ScrollReveal delay={0.1}>
               <div
                 className="relative p-8 h-full transition-all duration-500 hover:-translate-y-1 md:scale-105"
                 style={{
-                  background: "linear-gradient(180deg, hsl(120 10% 14%) 0%, hsl(120 10% 10%) 100%)",
-                  border: "1px solid hsl(80 70% 45% / 0.25)",
+                  background: "linear-gradient(180deg, hsl(220 8% 14%) 0%, hsl(220 8% 10%) 100%)",
+                  border: "1px solid hsl(var(--lime-dark) / 0.25)",
                   borderRadius: "8px",
-                  boxShadow: "0 0 40px hsl(80 70% 45% / 0.06)",
+                  boxShadow: "0 0 40px hsl(var(--lime-dark) / 0.06)",
                 }}
               >
                 {/* Badge */}
@@ -1035,8 +1035,8 @@ const Index = () => {
                   <span
                     className="font-display text-[10px] uppercase tracking-wider px-3 py-1"
                     style={{
-                      background: "hsl(80 70% 45%)",
-                      color: "hsl(120 10% 10%)",
+                      background: "hsl(var(--lime-dark))",
+                      color: "hsl(220 8% 10%)",
                       borderRadius: "3px",
                     }}
                   >
@@ -1062,8 +1062,8 @@ const Index = () => {
                   href="#"
                   className="block w-full text-center py-3.5 font-display text-sm uppercase tracking-widest transition-all duration-300 hover:scale-[1.02]"
                   style={{
-                    background: "hsl(80 70% 45%)",
-                    color: "hsl(120 10% 10%)",
+                    background: "hsl(var(--lime-dark))",
+                    color: "hsl(220 8% 10%)",
                     borderRadius: "4px",
                   }}
                 >
@@ -1077,8 +1077,8 @@ const Index = () => {
               <div
                 className="relative p-8 h-full transition-all duration-500 hover:-translate-y-1"
                 style={{
-                  background: "linear-gradient(180deg, hsl(120 10% 13%) 0%, hsl(120 10% 10%) 100%)",
-                  border: "1px solid hsl(80 70% 45% / 0.08)",
+                  background: "linear-gradient(180deg, hsl(220 8% 13%) 0%, hsl(220 8% 10%) 100%)",
+                  border: "1px solid hsl(var(--lime-dark) / 0.08)",
                   borderRadius: "8px",
                 }}
               >
@@ -1104,7 +1104,7 @@ const Index = () => {
                   href="#"
                   className="block w-full text-center py-3.5 font-display text-sm uppercase tracking-widest transition-all duration-300 hover:opacity-90"
                   style={{
-                    background: "hsl(120 10% 20%)",
+                    background: "hsl(220 8% 20%)",
                     color: "hsl(0 0% 100%)",
                     borderRadius: "4px",
                   }}
@@ -1121,3 +1121,4 @@ const Index = () => {
 };
 
 export default Index;
+
