@@ -394,7 +394,7 @@ const Index = () => {
 
             <SplitText
               as="h1"
-              className="font-display text-7xl md:text-[9rem] lg:text-[11rem] leading-[0.85] text-on-dark tracking-tighter"
+              className="font-display text-8xl md:text-[11rem] lg:text-[13rem] xl:text-[15rem] leading-[0.82] text-on-dark tracking-tighter"
               splitBy="chars"
               stagger={0.03}
               duration={0.9}
@@ -839,17 +839,39 @@ const Index = () => {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
             {stats.map((stat) => (
               <ScrollReveal key={stat.label}>
-                <p
-                  className="font-display text-6xl md:text-8xl text-lime"
-                  data-counter={stat.numericValue}
-                  data-suffix={stat.value.replace(/[\d.]/g, "")}
-                  data-decimals={stat.value.includes(".") ? "1" : undefined}
+                <div
+                  className="relative overflow-hidden px-6 py-10 md:px-8 md:py-12 border border-lime/10 bg-dark-card"
+                  style={{ borderRadius: "8px" }}
                 >
-                  0
-                </p>
-                <p className="font-body text-sm text-lime/60 tracking-widest uppercase mt-2">
-                  {stat.label}
-                </p>
+                  <div
+                    className="absolute inset-0 opacity-[0.16] pointer-events-none"
+                    style={{
+                      backgroundImage:
+                        "linear-gradient(hsl(var(--lime-dark) / 0.18) 1px, transparent 1px), linear-gradient(90deg, hsl(var(--lime-dark) / 0.18) 1px, transparent 1px)",
+                      backgroundSize: "44px 44px",
+                    }}
+                  />
+                  <div
+                    className="absolute inset-0 pointer-events-none"
+                    style={{
+                      background:
+                        "radial-gradient(circle at top center, hsl(var(--lime) / 0.08), transparent 55%)",
+                    }}
+                  />
+                  <div className="relative z-10">
+                    <p
+                      className="font-display text-6xl md:text-8xl text-lime"
+                      data-counter={stat.numericValue}
+                      data-suffix={stat.value.replace(/[\d.]/g, "")}
+                      data-decimals={stat.value.includes(".") ? "1" : undefined}
+                    >
+                      0
+                    </p>
+                    <p className="font-body text-sm text-lime/60 tracking-widest uppercase mt-2">
+                      {stat.label}
+                    </p>
+                  </div>
+                </div>
               </ScrollReveal>
             ))}
           </div>
