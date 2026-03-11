@@ -377,7 +377,7 @@ const Index = () => {
           {/* Hero content */}
           <div
             ref={heroContentRef}
-            className="relative z-10 text-center px-6 max-w-5xl mx-auto"
+            className="relative z-10 text-center px-4 sm:px-6 max-w-5xl mx-auto"
           >
             <SplitText
               as="p"
@@ -394,7 +394,7 @@ const Index = () => {
 
             <SplitText
               as="h1"
-              className="font-display text-8xl md:text-[11rem] lg:text-[13rem] xl:text-[15rem] leading-[0.82] text-on-dark tracking-tighter"
+              className="font-display text-[clamp(3.75rem,18vw,5.5rem)] sm:text-[7rem] md:text-[11rem] lg:text-[13rem] xl:text-[15rem] leading-[0.82] text-on-dark tracking-tighter"
               splitBy="chars"
               stagger={0.03}
               duration={0.9}

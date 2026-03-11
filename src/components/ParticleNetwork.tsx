@@ -7,12 +7,16 @@ interface Particle {
   vy: number;
   radius: number;
   opacity: number;
+  driftSeed: number;
 }
 
-const PARTICLE_COUNT = 80;
-const CONNECTION_DISTANCE = 150;
-const MOUSE_RADIUS = 200;
-const MOUSE_FORCE = 0.02;
+const DESKTOP_PARTICLE_COUNT = 80;
+const MOBILE_PARTICLE_COUNT = 52;
+const DESKTOP_CONNECTION_DISTANCE = 150;
+const MOBILE_CONNECTION_DISTANCE = 120;
+const POINTER_RADIUS = 200;
+const POINTER_FORCE = 0.02;
+const AMBIENT_DRIFT = 0.015;
 
 const ParticleNetwork = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -20,17 +24,22 @@ const ParticleNetwork = () => {
   const mouseRef = useRef({ x: -9999, y: -9999 });
   const animationRef = useRef<number>(0);
   const dimensionsRef = useRef({ w: 0, h: 0 });
+  const settingsRef = useRef({
+    particleCount: DESKTOP_PARTICLE_COUNT,
+    connectionDistance: DESKTOP_CONNECTION_DISTANCE,
+  });
 
-  const createParticles = useCallback((w: number, h: number) => {
+  const createParticles = useCallback((w: number, h: number, count: number) => {
     const particles: Particle[] = [];
-    for (let i = 0; i < PARTICLE_COUNT; i++) {
+    for (let i = 0; i < count; i++) {
       particles.push({
         x: Math.random() * w,
         y: Math.random() * h,
-        vx: (Math.random() - 0.5) * 0.4,
-        vy: (Math.random() - 0.5) * 0.4,
+        vx: (Math.random() - 0.5) * 0.7,
+        vy: (Math.random() - 0.5) * 0.7,
         radius: Math.random() * 2 + 1,
         opacity: Math.random() * 0.35 + 0.15,
+        driftSeed: Math.random() * Math.PI * 2,
       });
     }
     return particles;
@@ -52,17 +61,32 @@ const ParticleNetwork = () => {
       const dpr = window.devicePixelRatio || 1;
       const w = rect.width;
       const h = rect.height;
+      const isMobile = window.innerWidth < 768;
+
+      settingsRef.current = {
+        particleCount: isMobile
+          ? MOBILE_PARTICLE_COUNT
+          : DESKTOP_PARTICLE_COUNT,
+        connectionDistance: isMobile
+          ? MOBILE_CONNECTION_DISTANCE
+          : DESKTOP_CONNECTION_DISTANCE,
+      };
 
       canvas.width = w * dpr;
       canvas.height = h * dpr;
       canvas.style.width = `${w}px`;
       canvas.style.height = `${h}px`;
+      ctx.setTransform(1, 0, 0, 1, 0, 0);
       ctx.scale(dpr, dpr);
 
       dimensionsRef.current = { w, h };
 
       // Reinit particles when resized
-      particlesRef.current = createParticles(w, h);
+      particlesRef.current = createParticles(
+        w,
+        h,
+        settingsRef.current.particleCount,
+      );
     };
 
     resize();
@@ -71,12 +95,22 @@ const ParticleNetwork = () => {
     ro.observe(parent);
 
     // Mouse tracking (relative to canvas)
-    const handleMouseMove = (e: MouseEvent) => {
+    const updatePointer = (clientX: number, clientY: number) => {
       const rect = canvas.getBoundingClientRect();
       mouseRef.current = {
-        x: e.clientX - rect.left,
-        y: e.clientY - rect.top,
+        x: clientX - rect.left,
+        y: clientY - rect.top,
       };
+    };
+
+    const handleMouseMove = (e: MouseEvent) => {
+      updatePointer(e.clientX, e.clientY);
+    };
+
+    const handleTouchMove = (e: TouchEvent) => {
+      const touch = e.touches[0];
+      if (!touch) return;
+      updatePointer(touch.clientX, touch.clientY);
     };
 
     const handleMouseLeave = () => {
@@ -86,6 +120,9 @@ const ParticleNetwork = () => {
     // Attach to the parent so it captures events even though canvas is pointer-events: none
     parent.addEventListener("mousemove", handleMouseMove);
     parent.addEventListener("mouseleave", handleMouseLeave);
+    parent.addEventListener("touchmove", handleTouchMove, { passive: true });
+    parent.addEventListener("touchend", handleMouseLeave);
+    parent.addEventListener("touchcancel", handleMouseLeave);
 
     // Gold accent tuned to the warm yellow palette
     const LIME_R = 232;
@@ -97,6 +134,8 @@ const ParticleNetwork = () => {
       const { w, h } = dimensionsRef.current;
       const particles = particlesRef.current;
       const mouse = mouseRef.current;
+      const { connectionDistance } = settingsRef.current;
+      const time = performance.now() * 0.001;
 
       ctx.clearRect(0, 0, w, h);
 
@@ -108,15 +147,19 @@ const ParticleNetwork = () => {
         const dx = p.x - mouse.x;
         const dy = p.y - mouse.y;
         const dist = Math.sqrt(dx * dx + dy * dy);
-        if (dist < MOUSE_RADIUS && dist > 0) {
-          const force = (1 - dist / MOUSE_RADIUS) * MOUSE_FORCE;
+        if (dist < POINTER_RADIUS && dist > 0) {
+          const force = (1 - dist / POINTER_RADIUS) * POINTER_FORCE;
           p.vx += (dx / dist) * force;
           p.vy += (dy / dist) * force;
         }
 
+        // Ambient drift keeps the network visibly alive on touch devices.
+        p.vx += Math.sin(time * 0.9 + p.driftSeed) * AMBIENT_DRIFT;
+        p.vy += Math.cos(time * 0.75 + p.driftSeed) * AMBIENT_DRIFT;
+
         // Damping
-        p.vx *= 0.99;
-        p.vy *= 0.99;
+        p.vx *= 0.985;
+        p.vy *= 0.985;
 
         // Move
         p.x += p.vx;
@@ -144,8 +187,8 @@ const ParticleNetwork = () => {
           const dy = a.y - b.y;
           const dist = Math.sqrt(dx * dx + dy * dy);
 
-          if (dist < CONNECTION_DISTANCE) {
-            const alpha = (1 - dist / CONNECTION_DISTANCE) * 0.15;
+          if (dist < connectionDistance) {
+            const alpha = (1 - dist / connectionDistance) * 0.15;
             ctx.beginPath();
             ctx.moveTo(a.x, a.y);
             ctx.lineTo(b.x, b.y);
@@ -164,8 +207,8 @@ const ParticleNetwork = () => {
           const dy = p.y - mouse.y;
           const dist = Math.sqrt(dx * dx + dy * dy);
 
-          if (dist < MOUSE_RADIUS) {
-            const alpha = (1 - dist / MOUSE_RADIUS) * 0.25;
+          if (dist < POINTER_RADIUS) {
+            const alpha = (1 - dist / POINTER_RADIUS) * 0.25;
             ctx.beginPath();
             ctx.moveTo(mouse.x, mouse.y);
             ctx.lineTo(p.x, p.y);
@@ -186,6 +229,9 @@ const ParticleNetwork = () => {
       ro.disconnect();
       parent.removeEventListener("mousemove", handleMouseMove);
       parent.removeEventListener("mouseleave", handleMouseLeave);
+      parent.removeEventListener("touchmove", handleTouchMove);
+      parent.removeEventListener("touchend", handleMouseLeave);
+      parent.removeEventListener("touchcancel", handleMouseLeave);
     };
   }, [createParticles]);
 
